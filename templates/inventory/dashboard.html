@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard -{% endblock %}
+
+{% block content %}
+<div class="sidebar">
+  <h2>Dashboard</h2>
+  <div class="stat">
+    <h3>Total Products</h3>
+    <p>{{ total_products }}</p>
+  </div>
+  <div class="stat">
+    <h3>Total Quantity</h3>
+    <p>{{ total_quantity }}</p>
+  </div>
+  <div class="stat">
+    <h3>Low Stock</h3>
+    <p>{{ low_stock }}</p>
+  </div>
+  <a href="{% url 'add_product' %}"> <button class="action-btn">Add Product</button></a>
+</div>
+<style>
+  .low-stock {
+    background-color: #f8d7da;
+  }
+</style>
+<div class="main">
+  <h1>Product List</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Quantity</th>
+        <th>Price (₹)</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for product in products %}
+      <tr {% if product.quantity < 6 %}class="low-stock" {% endif %}>
+        <td>{{ product.name }}</td>
+        <td>
+          {% if product.quantity < 6 %} <span style="color: red;">{{ product.quantity }}</span>
+            {% else %}
+            {{ product.quantity }}
+            {% endif %}
+        </td>
+        <td>{{ product.price }}</td>
+        <td class="action-btns">
+          <a href="{% url 'edit_product' product.id %}"><button class="action-btn update">Update</button></a>
+          <form method="post" action="{% url 'delete_product' product.id %}"
+            onsubmit="return confirm('Are you sure you want to delete {{ product.name }}?');">
+            {% csrf_token %}
+            <button type="submit" class="action-btn delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% endblock %}

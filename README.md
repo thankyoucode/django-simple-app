@@ -1,44 +1,85 @@
-# Simple Django Application
+# Simple Inventory System (Django)
 
-A simple Django project created to **refresh and revisit** core concepts —
-focusing mainly on **user registration, login, and logout** functionality
-without using any custom user model.
+This is a lightweight, personal-use inventory system built with Django.
+The goal of this project was to refresh core Django fundamentals and rebuild the workflow from scratch — models, forms, views, authentication, and template structure — while keeping the app simple enough for daily use.
 
-## Users App
+It also serves as a practical reference project for a friend who is currently learning Django.
 
-This app demonstrates a straightforward flow for:
+---
 
-- Registering new users
-- Logging in existing users
-- Logging out authenticated users
+## Project Overview
 
-## Virtual environment
+The system allows each user to manage their own products.
+Nothing is shared — every account has a private inventory. The interface is intentionally minimal to keep the focus on functionality and readability of the codebase.
+
+> here `users` and `inventory` are apps
+
+### Key Features
+
+- **Private user inventories** — users only see their own items.
+- **Clean and mobile-friendly UI** — works well on both desktop and mobile.
+- **Basic authentication** — login, logout, and user-specific dashboards.
+- **Straightforward product management** — add, edit, and delete.
+- **Supports multiple users** without conflict.
+- **Great for learning Django** — demonstrates a clean flow of models → views → templates.
+
+---
+
+## Project Screenshots
+
+### User Login
+
+![Login](./screenshots/login.png)
+
+### User Register
+
+![Register](./screenshots/register.png)
+
+### Dashboard
+
+![Dashboard](./screenshots/dashboard.png)
+
+### Update Product (`Add Product` is similer to this)
+
+![Update Product](./screenshots/update_product.png)
+
+---
+
+## Environment Setup
 
 ```bash
-# 1. Initialize virtual environment and project
+# Create and initialize virtual environment
 uv init .venv
 
-# 2. Install dependencies from pyproject.toml
+# Install dependencies from pyproject.toml
 uv install
 ```
 
-## Project setup / run
+---
+
+## Running the Project
 
 ```bash
-# 1. Create a new Django project
+# Create Django project
 django-admin startproject myproject
 cd myproject
 
-# 2. Create a new app for users
+# Create app
 python manage.py startapp users
 
-# 3. Apply initial migrations
+# Apply migrations
 python manage.py makemigrations
 python manage.py migrate
 
-# 4. Create a superuser (optional, for admin)
+# Optional: Create superuser for admin access
 python manage.py createsuperuser
 
-# 5. Run the development server
+# Start server
 python manage.py runserver
 ```
+
+---
+
+## Contributing
+
+This is a small learning project, but improvements, suggestions, and pull requests are always welcome.

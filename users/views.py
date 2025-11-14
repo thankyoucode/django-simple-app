@@ -2,24 +2,36 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import redirect, render
+from django.utils.http import url_has_allowed_host_and_scheme
 
 
-def home(request):
+def user(request):
     return render(request, "index.html")
 
 
 def login_user(request):
+    next_url = request.GET.get("next") or request.POST.get("next")
     if request.method == "POST":
         username = request.POST["username"]
         password = request.POST["password"]
         user = authenticate(request, username=username, password=password)
         if user is not None:
             login(request, user)
-            return redirect("home")
+            # Validate the next URL to prevent open redirect vulnerabilities
+            if next_url and url_has_allowed_host_and_scheme(
+                next_url, allowed_hosts=request.get_host()
+            ):
+                return redirect(next_url)
+            else:
+                return redirect("/inventory")
         else:
-            return redirect("login")
-    else:
-        return render(request, "login.html")
+            # Handle invalid login
+            return render(
+                request,
+                "login.html",
+                {"error": "Invalid credentials", "next": next_url},
+            )
+    return render(request, "login.html", {"next": next_url})
 
 
 def logout_user(request):
@@ -60,6 +72,6 @@ def register_user(request):
         )
 
         login(request, user)
-        return redirect("home")
+        return redirect("dashboard")
 
     return render(request, "register.html")

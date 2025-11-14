@@ -1,0 +1,84 @@
+.main-form {
+  height: 100%;
+  width: 100%;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+
+.card {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  /* background: white; */
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: var(--primary);
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--secondary);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 1rem;
+  background: var(--light);
+  color: var(--text);
+  box-sizing: border-box;
+}
+
+.form-actions {
+  margin-top: 1.5rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.form-actions button,
+.form-actions a {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  flex: 1;
+}
+
+.form-actions button {
+  background: var(--accent);
+  color: white;
+}
+
+.form-actions a {
+  background: var(--secondary);
+  color: white;
+  text-decoration: none;
+  text-align: center;
+  flex: 1;
+}
+
+.form-actions button:hover,
+.form-actions a:hover {
+  opacity: 0.9;
+}

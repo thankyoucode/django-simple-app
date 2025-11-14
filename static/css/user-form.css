@@ -1,0 +1,75 @@
+.main-form {
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  min-width: 100%;
+}
+
+.form-box {
+  background: white;
+  padding: 2rem 2.5rem;
+  margin: 16px 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  font-size: 1.5rem;
+  text-align: center;
+  margin-bottom: 1.5rem;
+  color: #222;
+}
+
+label {
+  display: block;
+  margin-top: 0.9rem;
+  font-size: 0.9rem;
+}
+
+input {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 0.9rem;
+}
+
+button {
+  width: 100%;
+  margin-top: 1.5rem;
+  padding: 0.7rem;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.switch-link {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.switch-link a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.switch-link a:hover {
+  text-decoration: underline;
+}
+
+ul.messages {
+  color: red;
+  list-style: none;
+  padding: 0;
+}

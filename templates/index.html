@@ -1,87 +1,133 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
+{% load static %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: linear-gradient(135deg, #f8f9fb, #eef1f4);
-      color: #333;
-      margin: 0;
-      padding: 0;
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
+{% block content %}
+
+<style>
+  .hero-section {
+    padding: 60px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-section h1 {
+    font-size: 2.4rem;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 14px;
+  }
+
+  .hero-section p {
+    color: var(--secondary);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 30px;
+  }
+
+  /* Feature Grid */
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    padding: 20px;
+    /* width: 100%; */
+    margin: 0 auto 60px auto;
+  }
+
+  .feature-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    text-align: left;
+    transition: 0.2s ease;
+  }
+
+  .feature-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .feature-card h3 {
+    margin: 0 0 8px 0;
+    color: var(--primary);
+    font-size: 1.25rem;
+    font-weight: 600;
+  }
+
+  .feature-card p {
+    margin: 0;
+    font-size: 0.98rem;
+    color: var(--secondary);
+    line-height: 1.5;
+  }
+
+  /* Responsive Hero Adjustments */
+  @media(max-width: 768px) {
+    .hero-section h1 {
+      font-size: 1.9rem;
     }
 
-    .container {
-      text-align: center;
-      background: white;
-      padding: 2rem 3rem;
-      border-radius: 12px;
-      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .container:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
-    }
-
-    h1 {
-      font-size: 1.8rem;
-      color: #222;
-      margin-bottom: 1rem;
-    }
-
-    p {
-      color: #666;
+    .hero-section p {
       font-size: 1rem;
-      margin-bottom: 1.5rem;
     }
+  }
+</style>
 
-    a {
-      display: inline-block;
-      margin: 0 0.5rem;
-      padding: 0.6rem 1.2rem;
-      background: #007bff;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
-      font-size: 0.95rem;
-      transition: background 0.2s ease, transform 0.1s ease;
-    }
-
-    a:hover {
-      background: #0056b3;
-      transform: scale(1.05);
-    }
-
-    .emoji {
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-  </style>
-</head>
-
-<body>
-  <div class="container">
-    <div class="emoji">🏠</div>
-    <h1>Welcome Home!</h1>
-    <p>Your cozy little Django app is running smoothly 😎</p>
-
-    {% if user.is_authenticated %}
-    <a href="/user/logout">Logout</a>
-    {% else %}
-    <a href="/user/login">Login</a>
-    <a href="/user/register">Register</a>
-    {% endif %}
+<div>
+  <div class="hero-section">
+    <h1>Easy Inventory System for Daily Use</h1>
+    <p>
+      This system is made simple. You can add your products, manage stock, and keep everything private to your account.
+      It works on phone and desktop, and is also useful for learning basic Django backend concepts.
+    </p>
   </div>
-</body>
 
-</html>
+  <div class="feature-grid">
+
+    <div class="feature-card">
+      <h3>Your Data Only</h3>
+      <p>
+        Every user has their own space. Other users cannot see your products.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Simple to Use</h3>
+      <p>
+        Clean layout, easy buttons, smooth on mobile. No confusing things.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Secure Login</h3>
+      <p>
+        Only you can access your dashboard after login. Basic security is there.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Easy Product Update</h3>
+      <p>
+        Add new items, edit old ones, and handle stock in a simple way.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Handles Many Users</h3>
+      <p>
+        System supports many users at the same time without issues.
+      </p>
+    </div>
+
+    <div class="feature-card">
+      <h3>Learn Django</h3>
+      <p>
+        Good for understanding models, views, forms, and how data flows in Django.
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

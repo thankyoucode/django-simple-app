@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Add Product -{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/product-form.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main-form">
+  <div class="card">
+    <h3>Add Product</h3>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label>Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="form-group">
+        <label>Quantity</label>
+        <input type="number" name="quantity" required>
+      </div>
+      <div class="form-group">
+        <label>Price (₹)</label>
+        <input type="number" step="0.01" name="price" required>
+      </div>
+      <div class="form-actions">
+        <button type="submit">Add</button>
+        <a href="{% url 'dashboard' %}">Cancel</a>
+      </div>
+
+    </form>
+  </div>
+</div>
+{% endblock %}

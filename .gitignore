@@ -12,3 +12,5 @@ wheels/
 .vscode
 uv.lock
 *.sqlite3
+**/migrations/
+**/migrations/__pycache__/
